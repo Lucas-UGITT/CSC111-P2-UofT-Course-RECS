@@ -3,42 +3,63 @@
 This is a project written in python to recommend ARTSCI course to students.
 Follow [this link](https://www.teach.cs.toronto.edu/~csc111h/winter/assignments/project2/phase2/) to project requirement
 
+## Getting Started
+
+### Install Chrome:
+Download and install Google Chrome at https://www.google.com/chrome/
+
+If you have already installed chrome, please make sure your browser version is no less than 123.0.0000.00
+
+### Install Chromedriver
+Download and chromedriver 124.0.000.00 from https://googlechromelabs.github.io/chrome-for-testing/#stable. Your should download the one with chromedriver at the first column.
+
+If you are using Linux-Arm, you can also download chromedriver from https://github.com/electron/electron/releases/tag/v30.0.1.
+
+Place your chromedriver at an appropriate location
+
+Your python version should be not less than 3.10
+
+### Install below python packages using pip
+- python-ta~=2.7.0
+- selenium==4.9.0
+- requests==2.31.0
+- beautifulsoup4==4.12.3
+
+To start selenium correctly, specify the location of webdriver in the python code.
+```Python
+  from selenium import webdriver
+  driver = webdriver.Chrome(executable_path='ABSOLUTE_PATH\TO\CHROMEDRIVER')    
+```
+
+Then you should be able to scrape the data and run the course recommendation program.
 
 ## Tasks and Features
 
 ### Writing Report
-- Introduction (Who)
-- Description of Dataset (Who)
-- Computational overview (Who)  
-- Instructions for obtaining datasets and running your program (Who)
-- Changes to your project plan (Who)
-- Discussion (Who)
-- References Section (Who)
-### Dataset (Wes)
+- Introduction
+- Description of Dataset
+- Computational overview
+- Instructions for obtaining datasets and running your program
+- Changes to your project plan
+- Discussion
+- References Section
+### Dataset
 - Course
 - Reviews
 ### Features
 #### Recommendation:
 ##### Input
-- user input (courses completed, current courses, program, interest?)
-- load a graph (Wes)
+- user input (courses completed, courses passed (optional), programme interested in?)
+- load a graph
 ##### Data Structure
 ###### Graph
 - Edges
   - scores on the review
 - Vertex:
-  - review made by user
+  - professor
+  - breadth requirement
+  - programme
   - course
-    - req (parent class)
-      - init: use binary tree? load course req as boolean
-      - prerequisite (children)
-      - corequisite (children)
-    - breadth requirement (int)
-    - distribution requirement (int)
-    - programme completion requirement (class)
+  - course-level
 ##### Output
-- recommend (func; default-max: 3)
-
-#### Information Query
-- Input: course code/course name
-- Output: course information
+- recommend (func; default-max: 3 for each course)
